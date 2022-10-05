@@ -20,11 +20,9 @@ branches:
   dev:
     regex: ^dev(elop)?(ment)?$
     mode: ContinuousDeployment
-    tag: ''
     increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
-    source-branches: []
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: true
