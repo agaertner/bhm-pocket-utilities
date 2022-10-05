@@ -59,8 +59,8 @@ namespace Nekres.Inquest_Module
 
         protected override void DefineSettings(SettingCollection settings)
         {
-            var hotkeys = settings.AddSubCollection("Control Options", true, false);
-
+            var hotkeys = settings.AddSubCollection("Control Options");
+            hotkeys.RenderInUi = true;
             AutoClickHoldKeySetting = hotkeys.DefineSetting("autoClickHoldKeyBinding", new KeyBinding(Keys.OemComma), 
                 () => "Hold Double Clicking", 
                 () => "Perform Double Clicks at the current cursor position while the key is being pressed.");
@@ -71,7 +71,8 @@ namespace Nekres.Inquest_Module
                 () => "Dodge-Jump",
                 () => "Perform a dodge roll and a jump simultaneously.");
 
-            var controlOptions = hotkeys.AddSubCollection("Movement Keys to Trigger on Dodge-Jump", true, false);
+            var controlOptions = hotkeys.AddSubCollection("Movement Keys to Trigger on Dodge-Jump");
+            controlOptions.RenderInUi = true;
             DodgeKeyBindingSetting = controlOptions.DefineSetting("dodgeKeyBinding", new KeyBinding(Keys.V), () => "Dodge", () => "Do an evasive dodge roll, negating damage, in the direction your character is moving (backward if stationary).");
             JumpKeyBindingSetting = controlOptions.DefineSetting("jumpKeyBinding", new KeyBinding(Keys.Space), () => "Jump", () => "Press to jump over obstacles.");
 
@@ -79,7 +80,8 @@ namespace Nekres.Inquest_Module
                 () => "Hold Double Clicking + Left Mouse Button",
                 () => "Perform Double clicks at the current cursor position while Hold Double Clicking and Left Mouse Button is being pressed.");
 
-            var audio = settings.AddSubCollection("Sound Options", true, false);
+            var audio = settings.AddSubCollection("Sound Options");
+            audio.RenderInUi = true;
             AutoClickSoundDisabledSetting = audio.DefineSetting("autoClickSoundsDisabled", false, 
                 () => "Disable Clicking Sounds", 
                 () => "Disables the sound alert when an auto click is performed.");
@@ -88,8 +90,9 @@ namespace Nekres.Inquest_Module
                 () => "Clicking Sounds Volume", 
                 () => "Sets the audio volume of the clicking alerts.");
 
-            var hiddenSettingsCache = settings.AddSubCollection("hiddenSettingsCache", false, false);
-            AutoClickToggleInterval = hiddenSettingsCache.DefineSetting("autoClickToggleInterval", 0.0);
+            var hiddenSettingsCache = settings.AddSubCollection("hiddenSettingsCache");
+            hiddenSettingsCache.RenderInUi = true;
+            AutoClickToggleInterval        = hiddenSettingsCache.DefineSetting("autoClickToggleInterval", 0.0);
         }
 
         protected override void Initialize()
