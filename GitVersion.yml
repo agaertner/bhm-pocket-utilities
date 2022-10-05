@@ -22,6 +22,7 @@ branches:
     mode: ContinuousDeployment
     increment: Patch
     prevent-increment-of-merged-branch-version: false
+    source-branches: []
     track-merge-target: true
     tracks-release-branches: true
     is-release-branch: false
