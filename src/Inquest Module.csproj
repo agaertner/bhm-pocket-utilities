@@ -7,7 +7,7 @@
     <ProjectGuid>{FEC31CE0-4539-4A1B-A633-78E3BDBD8C56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Nekres.Inquest_Module</RootNamespace>
-    <AssemblyName>Inquest Module</AssemblyName>
+    <AssemblyName>PocketUtilities</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="Core\Controllers\AutoClickController.cs" />
     <Compile Include="InquestModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Controls\NumericInputPrompt.cs" />
     <Compile Include="UI\Controls\TaskIndicator\ClickIndicator.cs" />
     <Compile Include="UI\Controls\TaskIndicator\TaskIndicator.cs" />
