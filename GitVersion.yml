@@ -19,12 +19,11 @@ branches:
     is-mainline: false
   dev:
     regex: ^dev(elop)?(ment)?$
-    mode: ContinuousDeployment
     increment: Patch
-    prevent-increment-of-merged-branch-version: false
+    prevent-increment-of-merged-branch-version: true
     source-branches: []
-    track-merge-target: true
-    tracks-release-branches: true
+    track-merge-target: false
+    tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
     pre-release-weight: 0
