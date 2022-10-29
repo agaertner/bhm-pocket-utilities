@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 namespace Nekres.Inquest_Module {
-    internal class KeyStateUtil {
+    internal static class KeyStateUtil {
         #region PInvoke
 
         [DllImport("USER32.dll")]
