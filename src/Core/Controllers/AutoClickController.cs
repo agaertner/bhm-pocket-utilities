@@ -168,7 +168,9 @@ namespace Nekres.Inquest_Module.Core.Controllers
 
         private bool IsBusy()
         {
-            var isBusy = !GameService.GameIntegration.Gw2Instance.Gw2IsRunning
+            var isBusy = KeyStateUtil.IsAnyControlPressed() 
+                         || KeyStateUtil.IsAnyShiftPressed()
+                         || !GameService.GameIntegration.Gw2Instance.Gw2IsRunning
                          || !GameService.GameIntegration.Gw2Instance.IsInGame
                          || GameService.Gw2Mumble.UI.IsTextInputFocused
                          || GameService.Input.Mouse.CameraDragging

@@ -129,14 +129,15 @@
     <Compile Include="Core\Controllers\AutoClickController.cs" />
     <Compile Include="InquestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Controls\NumericInputPrompt.cs" />
-    <Compile Include="UI\Controls\TaskIndicator\ClickIndicator.cs" />
-    <Compile Include="UI\Controls\TaskIndicator\TaskIndicator.cs" />
-    <Compile Include="UI\Controls\TaskIndicator\TaskIndicatorBase.cs" />
-    <Compile Include="UI\Views\CustomSettingsView\CustomSettingsModel.cs" />
-    <Compile Include="UI\Views\CustomSettingsView\CustomSettingsPresenter.cs" />
-    <Compile Include="UI\Views\CustomSettingsView\CustomSettingsView.cs" />
+    <Compile Include="Core\UI\Controls\NumericInputPrompt.cs" />
+    <Compile Include="Core\UI\Controls\TaskIndicator\ClickIndicator.cs" />
+    <Compile Include="Core\UI\Controls\TaskIndicator\TaskIndicator.cs" />
+    <Compile Include="Core\UI\Controls\TaskIndicator\TaskIndicatorBase.cs" />
+    <Compile Include="Core\UI\Views\CustomSettingsView\CustomSettingsModel.cs" />
+    <Compile Include="Core\UI\Views\CustomSettingsView\CustomSettingsPresenter.cs" />
+    <Compile Include="Core\UI\Views\CustomSettingsView\CustomSettingsView.cs" />
     <Compile Include="_Utils\BrowserUtil.cs" />
+    <Compile Include="_Utils\KeyStateUtil.cs" />
     <Compile Include="_Utils\WindowUtil.cs" />
   </ItemGroup>
   <ItemGroup>
