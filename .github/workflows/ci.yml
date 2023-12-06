@@ -7,8 +7,6 @@ on:
     paths:
       - 'src/**/*'
       - 'submodules/**/*'
-    tags-ignore:
-      - v*
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
@@ -20,16 +18,17 @@ concurrency:
 jobs:
     build-prerelease:
         name: Bump Version / Create Pull Request
-        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         runs-on: windows-latest
+        # Only run on pushes directly to dev. Ignore pushes to PRs
+        if: ${{ github.ref == 'refs/heads/dev' && !github.event.pull_request && !startsWith(github.ref, 'refs/tags/') }}
         steps:
             - name: Install GitVersion
-              uses: gittools/actions/gitversion/setup@v0.9.7
+              uses: gittools/actions/gitversion/setup@v0.10.2
               with:
                 versionSpec: '5.x'
                 
             - name: Checkout 'dev'
-              uses: actions/checkout@v3.3.0
+              uses: actions/checkout@v4.1.1
               with:
                 submodules: 'false'
                 fetch-depth: 0
@@ -44,7 +43,7 @@ jobs:
                 git push --set-upstream origin actions/version-bump
                 
             - name: Checkout 'actions/version-bump'
-              uses: actions/checkout@v3.3.0
+              uses: actions/checkout@v4.1.1
               with:
                 ref: actions/version-bump
                 submodules: 'false'
@@ -52,7 +51,7 @@ jobs:
                 
             - name: Bump version in AssemblyInfo.cs
               id: gitversion
-              uses: gittools/actions/gitversion/execute@v0.9.15
+              uses: gittools/actions/gitversion/execute@v0.10.2
               with:
                 useConfigFile: true
                 updateAssemblyInfo: true
@@ -74,7 +73,7 @@ jobs:
                 git commit -m "(skip): 🔖 bump version to ${{ steps.gitversion.outputs.fullSemVer }}"
                 
             - name: Push version changes
-              uses: ad-m/github-push-action@v0.6.0
+              uses: ad-m/github-push-action@v0.8.0
               with:
                 github_token: ${{ github.token }}
                 branch: actions/version-bump
@@ -82,7 +81,7 @@ jobs:
                 force: true
                 
             - name: Update or Create PR 'dev ← actions/version-bump'
-              uses: peter-evans/create-pull-request@v5-beta
+              uses: peter-evans/create-pull-request@v5.0.2
               with:
                 branch: actions/version-bump
                 base: dev
