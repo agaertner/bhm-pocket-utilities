@@ -26,16 +26,16 @@ jobs:
             version: ${{ steps.get_version.outputs.prop }}
         steps:
             - name: Install MSBuild Tools
-              uses: microsoft/setup-msbuild@v1.3.1
+              uses: microsoft/setup-msbuild@v2
               
             - name: Install NuGet
-              uses: nuget/setup-nuget@v1.2.0
+              uses: nuget/setup-nuget@v2
               with:
                 nuget-api-key: ${{ secrets.NuGetAPIKey }}
                 nuget-version: '5.x'
 
             - name: Checkout
-              uses: actions/checkout@v4.1.1
+              uses: actions/checkout@v4.1.7
               with:
                 submodules: 'true'
                 fetch-depth: 0
@@ -76,7 +76,7 @@ jobs:
         
             - name: Upload BHM artifact
               id: upload_bhm
-              uses: actions/upload-artifact@v3.1.2
+              uses: actions/upload-artifact@v4.3.3
               with:
                 name: '${{ steps.get_namespace.outputs.prop }}_${{ steps.get_version.outputs.prop }}+PR.${{ github.event.number }}'
                 path: |
@@ -108,7 +108,7 @@ jobs:
               # restrictions put in place by GitHub Actions.
               # We continue-on-error to give green light to fork PRs anyway.
               # The artifacts are still available in the action summary.
-              uses: peter-evans/create-or-update-comment@v3.0.2
+              uses: peter-evans/create-or-update-comment@v4.0.0
               continue-on-error: true
               with:
                 token: ${{ secrets.GITHUB_TOKEN }}

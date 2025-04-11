@@ -23,12 +23,12 @@ jobs:
         if: ${{ github.ref == 'refs/heads/dev' && !github.event.pull_request && !startsWith(github.ref, 'refs/tags/') }}
         steps:
             - name: Install GitVersion
-              uses: gittools/actions/gitversion/setup@v0.10.2
+              uses: gittools/actions/gitversion/setup@v1.1.1
               with:
                 versionSpec: '5.x'
                 
             - name: Checkout 'dev'
-              uses: actions/checkout@v4.1.1
+              uses: actions/checkout@v4.1.7
               with:
                 submodules: 'false'
                 fetch-depth: 0
@@ -43,7 +43,7 @@ jobs:
                 git push --set-upstream origin actions/version-bump
                 
             - name: Checkout 'actions/version-bump'
-              uses: actions/checkout@v4.1.1
+              uses: actions/checkout@v4.1.7
               with:
                 ref: actions/version-bump
                 submodules: 'false'
@@ -51,14 +51,14 @@ jobs:
                 
             - name: Bump version in AssemblyInfo.cs
               id: gitversion
-              uses: gittools/actions/gitversion/execute@v0.10.2
+              uses: gittools/actions/gitversion/execute@v1.1.1
               with:
                 useConfigFile: true
                 updateAssemblyInfo: true
                 updateAssemblyInfoFilename: src/Properties/AssemblyInfo.cs
 
             - name: Bump version in manifest.json
-              uses: jossef/action-set-json-field@v2.1
+              uses: jossef/action-set-json-field@v2.2
               with:
                 file: src/manifest.json
                 field: version
@@ -81,7 +81,7 @@ jobs:
                 force: true
                 
             - name: Update or Create PR 'dev ← actions/version-bump'
-              uses: peter-evans/create-pull-request@v5.0.2
+              uses: peter-evans/create-pull-request@v6.1.0
               with:
                 branch: actions/version-bump
                 base: dev
